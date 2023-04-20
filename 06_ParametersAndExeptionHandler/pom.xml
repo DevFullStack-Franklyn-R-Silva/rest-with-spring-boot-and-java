@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.5</version>
+		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.github.hadesfranklyn</groupId>
-	<artifactId>rest-with-spring-boot-and-java</artifactId>
+	<artifactId>06_ParametersAndExeptionHandler</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rest-with-spring-boot-and-java</name>
+	<name>06_ParametersAndExeptionHandler</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>20</java.version>
