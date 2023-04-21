@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.hadesfranklyn.project.data.vo.v1.PersonVO;
+import com.github.hadesfranklyn.project.data.vo.v2.PersonVOV2;
 import com.github.hadesfranklyn.project.exceptions.ResourceNotFoundException;
 import com.github.hadesfranklyn.project.mapper.DozerMapper;
+import com.github.hadesfranklyn.project.mapper.custom.PersonMapper;
 import com.github.hadesfranklyn.project.model.Person;
 import com.github.hadesfranklyn.project.repositories.PersonRepository;
 
@@ -17,6 +19,9 @@ public class PersonServices {
 
 	@Autowired
 	private PersonRepository repository;
+	
+	@Autowired
+	private PersonMapper mapper;
 
 	private Logger logger = Logger.getLogger(PersonServices.class.getName());
 
@@ -43,6 +48,14 @@ public class PersonServices {
 		var entity = DozerMapper.parseObject(person, Person.class);
 
 		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+		return vo;
+	}
+	
+	public PersonVOV2 createV2(PersonVOV2 person) {
+		logger.info("Creating one person with V2!");
+		var entity = mapper.convertVoToEntity(person);
+
+		var vo = mapper.convertEntityToVo( repository.save(entity));
 		return vo;
 	}
 
